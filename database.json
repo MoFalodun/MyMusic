@@ -1,0 +1,6 @@
+{
+    "development": {
+      "ENV": "MYMUSIC_POSTGRES_DEV_URL"
+    },
+    "sql-file": true
+  }

@@ -1,0 +1,178 @@
+{"message":"undefined 7848","level":"info","timestamp":"2021-05-06T11:10:57.522Z","label":"AWAKE_API"}
+{"message":"Awake is running on PORT 7848","level":"info","timestamp":"2021-05-06T11:12:38.577Z","label":"AWAKE_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-06T11:14:23.223Z","label":"AWAKE_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-06T11:58:25.055Z","label":"AWAKE_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-09T17:04:30.363Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sign-up - POST - ::1","level":"error","timestamp":"2021-05-09T17:16:39.874Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:16:39 +0000] \"POST /sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:16:39.887Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sig - POST - ::1","level":"error","timestamp":"2021-05-09T17:17:00.593Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:17:00 +0000] \"POST /sig HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:17:00.593Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sign-up - GET - ::1","level":"error","timestamp":"2021-05-09T17:17:24.333Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:17:24 +0000] \"GET /sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:17:24.333Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sign-up - GET - ::1","level":"error","timestamp":"2021-05-09T17:18:59.772Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:18:59 +0000] \"GET /sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:18:59.773Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sign-up - POST - ::1","level":"error","timestamp":"2021-05-09T17:19:09.860Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:19:09 +0000] \"POST /sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:19:09.861Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /sign-up - POST - ::1","level":"error","timestamp":"2021-05-09T17:19:11.883Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:19:11 +0000] \"POST /sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:19:11.884Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-09T17:19:40.909Z","label":"AWAKE_API"}
+{"message":"::1 - - [09/May/2021:17:19:40 +0000] \"POST /user/sign-up HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-09T17:19:40.910Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - /user - POST - ::1","level":"error","timestamp":"2021-05-10T03:04:19.678Z","label":"AWAKE_API"}
+{"message":"::1 - - [10/May/2021:03:04:19 +0000] \"POST /user HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:04:19.692Z","label":"AWAKE_API"}
+{"message":"ApiError - 404 - undefined - / - POST - ::1","level":"error","timestamp":"2021-05-10T03:04:28.133Z","label":"AWAKE_API"}
+{"message":"::1 - - [10/May/2021:03:04:28 +0000] \"POST / HTTP/1.1\" 404 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:04:28.134Z","label":"AWAKE_API"}
+{"message":"::1 - - [10/May/2021:03:04:48 +0000] \"GET / HTTP/1.1\" 200 75 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:04:48.919Z","label":"AWAKE_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:13:42.512Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 400 - First name is a required field - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:13:49.731Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:13:49 +0000] \"POST /user/sign-up HTTP/1.1\" 400 60 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:13:49.736Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:19:53 +0000] \"POST /user/sign-up HTTP/1.1\" - - \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:19:53.056Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:21:57.509Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - UserModel is not a constructor","level":"error","timestamp":"2021-05-10T03:22:02.768Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:22:02.768Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:22:02 +0000] \"POST /user/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:22:02.774Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:25:06.569Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - null value in column \"password\" of relation \"user_info\" violates not-null constraint","level":"error","timestamp":"2021-05-10T03:25:15.697Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:25:15.698Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:25:15 +0000] \"POST /user/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:25:15.703Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - null value in column \"password\" of relation \"user_info\" violates not-null constraint","level":"error","timestamp":"2021-05-10T03:26:21.983Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:26:21.984Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:26:21 +0000] \"POST /user/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:26:21.984Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 400 - Email is a required field - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:26:47.962Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:26:47 +0000] \"POST /user/sign-up HTTP/1.1\" 400 55 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:26:47.963Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:28:12.998Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - null value in column \"password\" of relation \"user_info\" violates not-null constraint","level":"error","timestamp":"2021-05-10T03:28:16.182Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:28:16.183Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:28:16 +0000] \"POST /user/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:28:16.189Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:31:57.048Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - data and salt arguments required","level":"error","timestamp":"2021-05-10T03:32:01.732Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T03:32:01.733Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:32:01 +0000] \"POST /user/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:32:01.738Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:35:17.837Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:35:21 +0000] \"POST /user/sign-up HTTP/1.1\" 200 396 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:35:21.861Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:37:06.901Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:37:21 +0000] \"POST /user/sign-up HTTP/1.1\" 200 461 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:37:21.441Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:38:14.915Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:03:38:21 +0000] \"POST /user/sign-up HTTP/1.1\" 200 444 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T03:38:21.509Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T03:58:31.729Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:05:42.088Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - undefined - undefined - undefined - undefined","level":"error","timestamp":"2021-05-10T04:06:05.750Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - res.status is not a function","level":"error","timestamp":"2021-05-10T04:06:05.751Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:06:05.752Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:06:05 +0000] \"POST /user/login HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:06:05.755Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - undefined - undefined - undefined - undefined","level":"error","timestamp":"2021-05-10T04:10:54.918Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - res.status is not a function","level":"error","timestamp":"2021-05-10T04:10:54.918Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:10:54.919Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:10:54 +0000] \"POST /user/login HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:10:54.920Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:11:07.763Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:11:09 +0000] \"POST /user/login HTTP/1.1\" 200 47 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:11:09.074Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:11:22 +0000] \"POST /user/sign-up HTTP/1.1\" 200 407 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:11:22.338Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 409 - USER exists already - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:11:37.697Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:11:37 +0000] \"POST /user/login HTTP/1.1\" 409 49 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:11:37.698Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:14:27.683Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 409 - USER exists already - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:14:29.850Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:14:29 +0000] \"POST /user/login HTTP/1.1\" 409 49 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:14:29.855Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:15:40.441Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:15:42.057Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:15:42.058Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:15:42 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:15:42.062Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:16:36.082Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:16:38.798Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:16:38.799Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:16:38 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:16:38.802Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:24:55.809Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:24:59.565Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:24:59.565Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:24:59 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:24:59.570Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:27:57.524Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:28:00.106Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:28:00.107Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:28:00 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:28:00.111Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:28:50.797Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:28:53.512Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:28:53.513Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:28:53 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:28:53.517Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:31:34.062Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:31:37.227Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:31:37.228Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:31:37 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:31:37.233Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T04:33:37.670Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - addDataToToken is not a function","level":"error","timestamp":"2021-05-10T04:33:40.525Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T04:33:40.526Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:04:33:40 +0000] \"POST /user/login HTTP/1.1\" 500 68 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T04:33:40.530Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T08:05:24.804Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - undefined - undefined - undefined - undefined","level":"error","timestamp":"2021-05-10T08:05:32.470Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - res.status is not a function","level":"error","timestamp":"2021-05-10T08:05:32.470Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:08:05:32 +0000] \"POST /user/login HTTP/1.1\" 200 49 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T08:05:32.472Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T08:05:32.474Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - undefined - undefined - undefined - undefined","level":"error","timestamp":"2021-05-10T08:08:29.036Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - DBError - res.status is not a function","level":"error","timestamp":"2021-05-10T08:08:29.037Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:08:08:29 +0000] \"POST /user/login HTTP/1.1\" 200 49 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T08:08:29.037Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Login failed. It is not you, it is us. - /user/login - POST - ::1","level":"error","timestamp":"2021-05-10T08:08:29.038Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T08:23:22.334Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:08:23:33 +0000] \"POST /user/login HTTP/1.1\" 200 49 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T08:23:33.265Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T08:25:04.055Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:08:25:07 +0000] \"POST /user/login HTTP/1.1\" 200 756 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T08:25:07.722Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T08:26:10.887Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:08:26:14 +0000] \"POST /user/login HTTP/1.1\" 200 659 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T08:26:14.848Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:06:29.335Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:07:21.037Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:11:06.779Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 400 - First name is a required field - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:11:09.361Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:11:09 +0000] \"POST /artist/sign-up HTTP/1.1\" 400 60 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:11:09.374Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 400 - undefined - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:11:45.883Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:11:45 +0000] \"POST /artist/sign-up HTTP/1.1\" 400 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:11:45.884Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:11:54.008Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 400 - undefined - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:11:57.405Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:11:57 +0000] \"POST /artist/sign-up HTTP/1.1\" 400 17 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:11:57.411Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:12:03.006Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:12:03.007Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:12:03 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:12:03.009Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:14:11.631Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:14:13.477Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:14:13.478Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:14:13 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:14:13.484Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:14:43.987Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:14:47.095Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:14:47.096Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:14:47 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:14:47.101Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:16:46.988Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:16:50.103Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:16:50.103Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:16:50 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:16:50.110Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:18:22.847Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:18:25.173Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:18:25.173Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:18:25 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:18:25.177Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:19:21.826Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:19:25.212Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:19:25.212Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:19:25 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:19:25.216Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:20:58.354Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:21:00.678Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:21:00.679Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:21:00 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:21:00.684Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:22:18.857Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:22:46 +0000] \"POST /user/sign-up HTTP/1.1\" 200 414 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:22:46.899Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:23:36.442Z","label":"MYMUSIC_API"}
+{"message":"USER_EMAIL_EXIST_VERIFICATION_FAIL - TypeError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:23:39.839Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Error trying to fetch user. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:23:39.839Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:23:39 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 82 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:23:39.843Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:27:03.272Z","label":"MYMUSIC_API"}
+{"message":"USER_SIGNUP_ERROR - DBError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:27:06.486Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:27:06.486Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:27:06 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:27:06.491Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:29:04.347Z","label":"MYMUSIC_API"}
+{"message":"Sign up failed. It is not you, it is us. - DBError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:29:06.998Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:29:07.000Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:29:07 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:29:07.006Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:30:48.563Z","label":"MYMUSIC_API"}
+{"message":"ARTIST_SIGNUP_ERROR - DBError - Invalid query format.","level":"error","timestamp":"2021-05-10T10:30:51.747Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:30:51.748Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:30:51 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:30:51.752Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:31:38.403Z","label":"MYMUSIC_API"}
+{"message":"ARTIST_SIGNUP_ERROR - DBError - syntax error at or near \")\"","level":"error","timestamp":"2021-05-10T10:31:40.990Z","label":"MYMUSIC_API"}
+{"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /artist/sign-up - POST - ::1","level":"error","timestamp":"2021-05-10T10:31:40.991Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:31:40 +0000] \"POST /artist/sign-up HTTP/1.1\" 500 70 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:31:40.995Z","label":"MYMUSIC_API"}
+{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-10T10:32:02.974Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:32:04 +0000] \"POST /artist/sign-up HTTP/1.1\" 200 337 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:32:04.917Z","label":"MYMUSIC_API"}
+{"message":"::1 - - [10/May/2021:10:35:54 +0000] \"POST /artist/login HTTP/1.1\" 200 593 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-10T10:35:54.081Z","label":"MYMUSIC_API"}
