@@ -70,7 +70,7 @@ class Helper {
        * token is valid or an error message if otherwise.
        */
   static verifyToken(token) {
-    return jwt.verify(token, SECRET);
+    return jwt.verify(token, SECRET, (err, data) => ({ err, data }));
   }
 
   /**

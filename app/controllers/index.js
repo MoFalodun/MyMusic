@@ -1,3 +1,5 @@
 import AuthController from './auth';
+import AlbumController from './album';
+import SongController from './song';
 
-export default AuthController;
+export { AuthController, AlbumController, SongController };

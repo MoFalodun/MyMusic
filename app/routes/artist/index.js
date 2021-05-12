@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { ValidationMiddleware, ArtistMiddleware } from '../../middlewares';
 import { artistSignUpSchema, userLoginSchema } from '../../validations';
-import AuthController from '../../controllers';
+import { AuthController } from '../../controllers';
 
-const { checkIfArtistExistsByEmail } = ArtistMiddleware;
+const { checkIfArtistExistsByEmail, userLoginEmailValidator } = ArtistMiddleware;
 const { validate } = ValidationMiddleware;
-const { artistSignup, artistLogin } = AuthController;
+const { artistSignup, login } = AuthController;
 const router = Router();
 
 router.post(
@@ -18,7 +18,8 @@ router.post(
 router.post(
   '/login',
   validate(userLoginSchema),
-  artistLogin
+  userLoginEmailValidator,
+  login
 );
 
 export default router;

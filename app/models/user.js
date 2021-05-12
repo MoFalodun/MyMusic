@@ -20,7 +20,7 @@ class UserModel {
     this.first_name = options.firstName;
     this.last_name = options.lastName;
     this.email = options.email.toLowerCase();
-    this.user_name = options.userName.toLowerCase();
+    this.user_name = options.username.toLowerCase();
     this.password = Helper.hashString(options.password);
     this.phone_number = options.phoneNumber;
   }

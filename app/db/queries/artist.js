@@ -8,7 +8,7 @@ export default {
             ) VALUES($1, $2, $3, $4) RETURNING *;
         `,
 
-  fetchArtistByEmail: 'SELECT * FROM artist_info WHERE email = $1;',
+  fetchArtist: 'SELECT * FROM artist_info WHERE email = $1 OR artist_name = $2;',
 
   fetchArtistByArtistName: 'SELECT * FROM artist_info WHERE email = $1;',
 

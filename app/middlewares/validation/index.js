@@ -12,7 +12,7 @@ class ValidationMiddleware {
   static validate(schema) {
     return async (req, res, next) => {
       try {
-        await validateInput(schema, req.body);
+        validateInput(schema, req.body);
         next();
       } catch (error) {
         const apiError = new ApiError({

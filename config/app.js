@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import morgan from 'morgan';
+import expressFileUpload from 'express-fileupload';
 import { json, urlencoded } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -21,6 +22,7 @@ const appConfig = (app) => {
   app.use(cors());
   app.use(json());
   app.use(urlencoded({ extended: true }));
+  app.use(expressFileUpload({ useTempFiles: true }));
   app.use(routes);
 
   app.get('/', (req, res) => successResponse(res, { message: WELCOME }));

@@ -2,21 +2,22 @@ import Joi from 'joi';
 import { ValidationHelper } from '../utils/helpers';
 
 const { emailCheck, passwordCheck, stringCheck,
-  editStringCheck, editPhoneCheck } = ValidationHelper;
+  editStringCheck, editPhoneCheck, editEmailCheck } = ValidationHelper;
 
 export const userSignUpSchema = Joi.object({
   firstName: stringCheck('First name', Joi, 3),
   lastName: stringCheck('Last name', Joi, 3),
   email: emailCheck(Joi),
-  userName: stringCheck('Username', Joi, 2),
+  username: stringCheck('Username', Joi, 2),
   password: passwordCheck(Joi),
   phoneNumber: editPhoneCheck(Joi)
 });
 
 export const userLoginSchema = Joi.object({
-  email: emailCheck(Joi),
+  email: editEmailCheck(Joi),
+  username: editStringCheck('UserName', Joi, 2),
   password: passwordCheck(Joi)
-});
+}).xor('email', 'username');
 
 export const updateUserSchema = Joi.object({
   first_name: editStringCheck('First name', Joi, 3),

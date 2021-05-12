@@ -2,7 +2,7 @@ import db from '../../db';
 import queries from '../../db/queries/artist';
 
 const {
-  fetchArtistByEmail, fetchArtistById, updatePassword, updateArtist
+  fetchArtist, fetchArtistById, updatePassword, updateArtist
 } = queries;
 
 /**
@@ -15,11 +15,14 @@ class ArtistService {
    * Fetches a Artist by email
    * @memberof ArtistService
    * @param {string} email - email of artist
+   * @param { string } artistName - name of the artist
    * @returns { Promise<Array | Error> } A promise that resolves or rejects
    * with an Array of the artist resource or a DB Error.
    */
-  static async getArtistByEmail(email) {
-    return db.oneOrNone(fetchArtistByEmail, [email.toLowerCase()]);
+  static async getArtist(email, artistName) {
+    const emailConverted = email || '';
+    const artist = artistName || '';
+    return db.oneOrNone(fetchArtist, [emailConverted.toLowerCase(), artist.toLowerCase()]);
   }
 
   /**
