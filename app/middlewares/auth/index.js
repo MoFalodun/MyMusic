@@ -4,6 +4,7 @@ const { verifyToken, errorResponse } = Helper;
 const {
   UNAVAILABLE_TOKEN,
   ERROR_VERIFYING_USER,
+  ERROR_VERIFYING_USER_MSG
 } = constants;
 
 /**
@@ -43,7 +44,7 @@ class AuthMiddleware {
       errorResponse(
         req,
         res,
-        new ApiError({ message: ERROR_VERIFYING_USER })
+        new ApiError({ message: ERROR_VERIFYING_USER_MSG })
       );
     }
   }

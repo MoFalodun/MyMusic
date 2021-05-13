@@ -35,12 +35,29 @@ class UploadMiddleware {
       req.body.link = music.Location;
       next();
     } catch (e) {
-      e.status = RESOURCE_UPLOAD_ERROR_STATUS('media');
+      e.status = RESOURCE_UPLOAD_ERROR_STATUS('MEDIA');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
         res,
-        new ApiError({ message: RESOURCE_UPLOAD_ERROR_MSG('media') })
+        new ApiError({ message: RESOURCE_UPLOAD_ERROR_MSG('MEDIA') })
+      );
+    }
+  }
+
+  static async albumUpload(req, res, next) {
+    try {
+      const { tempFilePath: path, name: fileName } = req.files.pictures;
+      const data = await uploadConfig(path, fileName);
+      req.body.pictures = data.Location;
+      next();
+    } catch (e) {
+      e.status = RESOURCE_UPLOAD_ERROR_STATUS('PICTURE');
+      Helper.moduleErrLogMessager(e);
+      errorResponse(
+        req,
+        res,
+        new ApiError({ message: RESOURCE_UPLOAD_ERROR_MSG('PICTURE') })
       );
     }
   }

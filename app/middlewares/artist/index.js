@@ -147,8 +147,7 @@ class ArtistMiddleware {
   }
 
   static async artistValidator(req, res, next) {
-    const { role } = req.user;
-    return role === 'artist'
+    return req.user.role === 'artist'
       ? next()
       : errorResponse(req, res, genericErrors.unAuthorized);
   }
