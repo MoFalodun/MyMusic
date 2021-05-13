@@ -2,7 +2,7 @@ import { Helper, constants, ApiError, genericErrors } from '../../utils';
 import { ArtistService } from '../../services';
 
 const {
-  getArtistByEmail,
+  getArtist,
   getArtistById,
 } = ArtistService;
 
@@ -27,8 +27,8 @@ const {
  */
 class ArtistMiddleware {
   /**
-   * Validates user's login credentials, with emphasis on the
-   * existence of a user with the provided email address.
+   * Validates artist's login credentials, with emphasis on the
+   * existence of a artist with the provided email address.
    * @static
    * @param { Object } req - The request from the endpoint.
    * @param { Object } res - The response returned by the method.
@@ -39,7 +39,7 @@ class ArtistMiddleware {
    */
   static async userLoginEmailValidator(req, res, next) {
     try {
-      req.user = await getArtistByEmail(req.body.email);
+      req.user = await getArtist(req.body.email, req.body.artistName);
       return req.user
         ? next()
         : errorResponse(req, res, genericErrors.inValidLogin);
@@ -77,7 +77,7 @@ class ArtistMiddleware {
 
   static async findUserByEmail(req, res, next) {
     try {
-      req.data = await getArtistByEmail(req.body.email);
+      req.data = await getArtist(req.body.email);
       return req.data
         ? next()
         : errorResponse(
@@ -97,8 +97,8 @@ class ArtistMiddleware {
   }
 
   /**
-   * Validates user, with emphasis on the
-   * existence of a user with the provided user email.
+   * Validates artist, with emphasis on the
+   * existence of a artist with the provided artist email.
    * @static
    * @param { Object } req - The request from the endpoint.
    * @param { Object } res - The response returned by the method.
@@ -109,7 +109,7 @@ class ArtistMiddleware {
    */
   static async checkIfArtistExistsByEmail(req, res, next) {
     try {
-      req.user = await getArtistByEmail(req.body.email);
+      req.user = await getArtist(req.body.email, req.body.artistName);
       return req.user
         ? errorResponse(req, res, new ApiError({ status: 409, message: USER_ALREADY_EXIST }))
         : next();
@@ -122,8 +122,8 @@ class ArtistMiddleware {
   }
 
   /**
-   * Validates user, with emphasis on the
-   * existence of a user with the provided user id.
+   * Validates artist, with emphasis on the
+   * existence of an artist with the provided artist id.
    * @static
    * @param { Object } req - The request from the endpoint.
    * @param { Object } res - The response returned by the method.
@@ -144,6 +144,12 @@ class ArtistMiddleware {
       errorResponse(req, res,
         new ApiError({ message: USER_EXIST_VERIFICATION_FAIL_MSG }));
     }
+  }
+
+  static async artistValidator(req, res, next) {
+    return req.user.role === 'artist'
+      ? next()
+      : errorResponse(req, res, genericErrors.unAuthorized);
   }
 }
 export default ArtistMiddleware;

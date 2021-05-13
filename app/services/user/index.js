@@ -2,7 +2,7 @@ import db from '../../db';
 import queries from '../../db/queries/user';
 
 const {
-  fetchUserByEmail, fetchUserByUsername, fetchUserById, updatePassword, updateUser
+  fetchUser, fetchUserByUsername, fetchUserById, updatePassword, updateUser
 } = queries;
 
 /**
@@ -15,11 +15,14 @@ class UserService {
    * Fetches a user by email
    * @memberof UserService
    * @param {string} email - email of User
+   * @param { string } username - username of User
    * @returns { Promise<Array | Error> } A promise that resolves or rejects
    * with an Array of the User resource or a DB Error.
    */
-  static async getUserByEmail(email) {
-    return db.oneOrNone(fetchUserByEmail, [email.toLowerCase()]);
+  static async getUser(email, username) {
+    const emailConverted = email || '';
+    const userName = username || '';
+    return db.oneOrNone(fetchUser, [emailConverted.toLowerCase(), userName.toLowerCase()]);
   }
 
   /**

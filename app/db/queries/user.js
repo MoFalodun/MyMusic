@@ -11,7 +11,7 @@ export default {
           ) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;
       `,
 
-  fetchUserByEmail: 'SELECT * FROM user_info WHERE email ILIKE $1;',
+  fetchUser: 'SELECT * FROM user_info WHERE email = $1 OR user_name = $2 ;',
 
   fetchUserByUsername: 'SELECT * FROM user_info WHERE email = $1;',
 
