@@ -20,10 +20,11 @@ class SongModel {
     this.artist_id = options.artistId;
     this.name = options.name;
     this.lyrics = options.lyrics;
-    this.album_id = options.albumId;
+    this.album_id = options.albumId || null;
     this.link = options.link;
     this.genre = options.genre;
     this.pictures = options.pictures;
+    this.song_time = options.songTime;
   }
 
   /**

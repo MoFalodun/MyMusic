@@ -1,10 +1,9 @@
 import { AlbumModel } from '../../models';
-import { UploadServices } from '../../services';
 import { Helper, constants, ApiError, DBError } from '../../utils';
 
-const { RESOURCE_CREATE_SUCCESS, RESOURCE_CREATE_ERROR_STATUS } = constants;
+const { RESOURCE_CREATE_SUCCESS,
+  RESOURCE_CREATE_ERROR_STATUS, RESOURCE_CREATE_ERROR_MSG } = constants;
 const { successResponse } = Helper;
-const { uploadConfig } = UploadServices;
 
 /**
  * @class AlbumController
@@ -23,21 +22,19 @@ class AlbumController {
   static async createAlbum(req, res, next) {
     try {
       const { id } = req.user;
-      const { tempFilePath: path, name: fileName } = req.files.pictures;
-      const data = await uploadConfig(path, fileName);
-      const album = new AlbumModel({ ...req.body, pictures: data.Location, artistId: id });
+      const album = new AlbumModel({ ...req.body, artistId: id });
       await album.save();
       successResponse(res, {
-        message: RESOURCE_CREATE_SUCCESS('Album'),
+        message: RESOURCE_CREATE_SUCCESS('ALBUM'),
         status: 200
       });
     } catch (e) {
       const dbError = new DBError({
-        status: RESOURCE_CREATE_ERROR_STATUS('Album'),
+        status: RESOURCE_CREATE_ERROR_STATUS('ALBUM'),
         message: e.message
       });
       Helper.moduleErrLogMessager(dbError);
-      next(new ApiError({ message: RESOURCE_CREATE_ERROR_STATUS('Album') }));
+      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('ALBUM') }));
     }
   }
 }

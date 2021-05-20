@@ -33,6 +33,7 @@ export default {
   USER_NOT_FOUND: 'User not found',
   INVALID_USER_ID: 'Invalid user id',
   ERROR_VERIFYING_USER: 'ERROR VERIFYING USER',
+  ERROR_VERIFYING_USER_MSG: 'Error trying to verify user. It is not you, it is us.',
   NOT_FOUND_API: 'Oops, You have reached a dead end',
   ACCESS_REVOKED: 'ACCESS REVOKED',
   AUTH_REQUIRED: 'Access denied,a valid access token is required',
@@ -42,6 +43,7 @@ export default {
   RESOURCE_CREATE_ERROR_STATUS: (resource) => `${resource}_CREATE_ERROR`,
   RESOURCE_CREATE_SUCCESS: (resource) => `${resource} created successfully`,
   RESOURCE_UPLOAD_ERROR_STATUS: (resource) => `${resource}_UPLOAD_ERROR`,
+  RESOURCE_CREATE_ERROR_MSG: (resource) => `Error trying to create ${resource}. It is not you, it is us.`,
   RESOURCE_UPLOAD_ERROR_MSG: (resource) => `${resource} upload failed. It is not you, it is us.`,
   RESOURCE_UPLOAD_SUCCESS: (resource) => `${resource} uploaded successfully`,
 };

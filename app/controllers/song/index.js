@@ -1,7 +1,8 @@
 import { SongModel } from '../../models';
 import { Helper, constants, ApiError, DBError } from '../../utils';
 
-const { RESOURCE_CREATE_SUCCESS, RESOURCE_CREATE_ERROR_STATUS } = constants;
+const { RESOURCE_CREATE_SUCCESS,
+  RESOURCE_CREATE_ERROR_STATUS, RESOURCE_CREATE_ERROR_MSG } = constants;
 const { successResponse } = Helper;
 
 /**
@@ -24,16 +25,16 @@ class SongController {
         artistId: req.user.id });
       await song.save();
       successResponse(res, {
-        message: RESOURCE_CREATE_SUCCESS('Song'),
+        message: RESOURCE_CREATE_SUCCESS('SONG'),
         status: 200
       });
     } catch (e) {
       const dbError = new DBError({
-        status: RESOURCE_CREATE_ERROR_STATUS('Song'),
+        status: RESOURCE_CREATE_ERROR_STATUS('SONG'),
         message: e.message
       });
       Helper.moduleErrLogMessager(dbError);
-      next(new ApiError({ message: RESOURCE_CREATE_ERROR_STATUS('Album') }));
+      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('SONG') }));
     }
   }
 }
