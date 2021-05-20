@@ -20,9 +20,7 @@ class SongController {
    */
   static async createSong(req, res, next) {
     try {
-      const { albumId } = req.params;
       const song = new SongModel({ ...req.body,
-        albumId: albumId || null,
         artistId: req.user.id });
       await song.save();
       successResponse(res, {

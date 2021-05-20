@@ -9,7 +9,7 @@ const { fileUpload } = UploadMiddleware;
 const router = Router();
 
 router.post(
-  '/:albumId || null',
+  '/',
   authenticate,
   artistValidator,
   fileUpload,

@@ -1,5 +1,8 @@
 import Joi from 'joi';
+import myCustomJoi from 'joi-phone-number';
 import { ValidationHelper } from '../utils/helpers';
+
+const myCustomPhoneValidator = Joi.extend(myCustomJoi);
 
 const { emailCheck, passwordCheck, stringCheck,
   editStringCheck, editPhoneCheck, editEmailCheck } = ValidationHelper;
@@ -11,6 +14,15 @@ export const userSignUpSchema = Joi.object({
   username: stringCheck('Username', Joi, 2),
   password: passwordCheck(Joi),
   phoneNumber: editPhoneCheck(Joi)
+});
+
+export const signupSchema = Joi.object({
+  firstName: Joi.string().min(3).max(100).required(),
+  lastName: Joi.string().min(3).max(100).required(),
+  email: Joi.string().email().required(),
+  username: Joi.string().required(),
+  phoneNumber: myCustomPhoneValidator.string().phoneNumber().required(),
+  password: Joi.string().min(7).required(),
 });
 
 export const userLoginSchema = Joi.object({
