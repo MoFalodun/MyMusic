@@ -15,5 +15,5 @@ export default {
   fetchSongsBYId: 'SELECT * FROM songs WHERE id = $1;',
   fetchSongsByArtist: 'SELECT * FROM songs WHERE artist_id ILIKE $1;',
   fetchAllSongs: 'SELECT * FROM songs',
-  fetchSongByGenre: 'SELECT * FROM songs WHERE genre = "jazz"',
+  fetchSongByGenre: 'SELECT * FROM songs WHERE genre = $1',
 };
