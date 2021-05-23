@@ -19,5 +19,6 @@ export default {
 
   updateArtist: `UPDATE  artist_info SET  artist_name=$1, updated_at=NOW() WHERE id=$3  RETURNING id,
                 artist_name,
-                email`
+                email`,
+  fetchAllArtists: 'SELECT * FROM artists',
 };

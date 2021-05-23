@@ -9,7 +9,7 @@ const {
   INVALID_EMAIL,
   LOGIN_USER_SUCCESSFULLY
 } = constants;
-const { successResponse, errorResponse, compareHash, addTokenToData } = Helper;
+const { successResponse, errorResponse, compareHash, addDataToToken } = Helper;
 /**
  * @class AuthController
  */
@@ -29,7 +29,6 @@ class AuthController {
       await user.save();
       successResponse(res, {
         message: USER_SIGNUP_SUCCESS,
-        status: 201
       });
     } catch (e) {
       const dbError = new DBError({
@@ -78,7 +77,7 @@ class AuthController {
    * @memberof AuthController
    */
   static async login(req, res, next) {
-    const token = addTokenToData(req.user);
+    const token = addDataToToken(req.user);
     const { password, ...user } = req.user;
     if (compareHash(req.body.password, password)) {
       return successResponse(res, {
