@@ -969,20 +969,6 @@
 {"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-12T23:46:33.681Z","label":"MYMUSIC_API"}
 {"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-12T23:46:40.447Z","label":"MYMUSIC_API"}
 {"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-12T23:46:46.244Z","label":"MYMUSIC_API"}
-<<<<<<< HEAD
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:00:52.332Z","label":"MYMUSIC_API"}
-{"message":"::1 - - [13/May/2021:20:01:26 +0000] \"POST /artist/login HTTP/1.1\" 200 519 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-13T20:01:26.655Z","label":"MYMUSIC_API"}
-{"message":"::1 - - [13/May/2021:20:02:33 +0000] \"POST /album/ HTTP/1.1\" 200 59 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-13T20:02:33.567Z","label":"MYMUSIC_API"}
-{"message":"::1 - - [13/May/2021:20:04:47 +0000] \"POST /song/ HTTP/1.1\" 200 58 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-13T20:04:47.878Z","label":"MYMUSIC_API"}
-{"message":"::1 - - [13/May/2021:20:05:37 +0000] \"POST /song/ HTTP/1.1\" 200 58 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-13T20:05:37.755Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:03.007Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:06.524Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:18.283Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:23.382Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:25.465Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:29.565Z","label":"MYMUSIC_API"}
-{"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-13T20:07:30.907Z","label":"MYMUSIC_API"}
-=======
 {"message":"MyMusic is running on PORT 7848","level":"info","timestamp":"2021-05-14T13:52:45.093Z","label":"MYMUSIC_API"}
 {"message":"USER_SIGNUP_ERROR - DBError - Cannot read property 'toLowerCase' of undefined","level":"error","timestamp":"2021-05-14T13:54:12.612Z","label":"MYMUSIC_API"}
 {"message":"ApiError - 500 - Sign up failed. It is not you, it is us. - /user/sign-up - POST - ::1","level":"error","timestamp":"2021-05-14T13:54:12.613Z","label":"MYMUSIC_API"}
@@ -1038,4 +1024,3 @@
 {"message":"::1 - - [14/May/2021:14:46:55 +0000] \"POST /user/login HTTP/1.1\" 401 53 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-14T14:46:55.575Z","label":"MYMUSIC_API"}
 {"message":"ApiError - 401 - Incorrect login details - /user/login - POST - ::1","level":"error","timestamp":"2021-05-14T14:47:06.467Z","label":"MYMUSIC_API"}
 {"message":"::1 - - [14/May/2021:14:47:06 +0000] \"POST /user/login HTTP/1.1\" 401 53 \"-\" \"PostmanRuntime/7.26.10\"\n","level":"info","timestamp":"2021-05-14T14:47:06.468Z","label":"MYMUSIC_API"}
->>>>>>> c559bfa (test: 💍 Add tests for available functions)
