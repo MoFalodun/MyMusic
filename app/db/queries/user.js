@@ -25,5 +25,6 @@ export default {
               last_name,
               email,
               user_name,
-              phone_number`
+              phone_number`,
+  fetchAllUsers: 'SELECT * FROM user_info;'
 };

@@ -14,4 +14,6 @@ export default {
   fetchSongsByName: 'SELECT * FROM songs WHERE name ILIKE $1;',
   fetchSongsBYId: 'SELECT * FROM songs WHERE id = $1;',
   fetchSongsByArtist: 'SELECT * FROM songs WHERE artist_id ILIKE $1;',
+  fetchAllSongs: 'SELECT * FROM songs',
+  fetchSongByGenre: 'SELECT * FROM songs WHERE genre = $1',
 };

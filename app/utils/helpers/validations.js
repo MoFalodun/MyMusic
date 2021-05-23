@@ -97,19 +97,6 @@ class ValidationHelper {
   }
 
   /**
-     * It validates a number that is not required.
-     * @static
-     * @memberof ValidationHelper
-     * @returns {Boolean}
-     */
-  static editNumberCheck(param, joiObject) {
-    return joiObject.number().messages({
-      'number.base': `${param}  must be a number`,
-      'string.empty': `${param} cannot be an empty field`
-    });
-  }
-
-  /**
      * It validates a phone number.
      * @static
      * @memberof ValidationHelper
@@ -162,38 +149,6 @@ class ValidationHelper {
   }
 
   /**
-     * It validates an array.
-     * @static
-     * @memberof ValidationHelper
-     * @returns {Boolean}
-     */
-  static arrayStringCheck(param, joiObject) {
-    return joiObject
-      .array()
-      .items(joiObject.string())
-      .required()
-      .messages({
-        'array.empty': `${param} is a required field`,
-        'array.base': `${param} must be a valid array`,
-        'any.required': `${param} cannot be an empty field`
-      });
-  }
-
-  /**
-     * It validates a date that is not required.
-     * @static
-     * @memberof ValidationHelper
-     * @returns {Boolean}
-     */
-  static editDateCheck(param, joiObject) {
-    return joiObject.date().messages({
-      'any.required': `${param} is a required field`,
-      'date.base': `${param} must be a correct date`,
-      'string.empty': `${param} cannot be an empty field`
-    });
-  }
-
-  /**
      * It validates a email
      * @static
      * @memberof ValidationHelper
@@ -208,40 +163,6 @@ class ValidationHelper {
   }
 
   /**
-     * It validates a phone number.
-     * @static
-     * @memberof ValidationHelper
-     * @returns {Boolean}
-     */
-  static regexNumberCheck(param, joiObject) {
-    return joiObject
-      .string()
-      .required()
-      .pattern(new RegExp('^[0-9]{10,14}$'))
-      .messages({
-        'string.pattern.base': `${param} must be a number between 11 and 14 digits`,
-        'string.empty': `${param} must not be an empty field`,
-        'any.required': `${param}  is a required field`
-      });
-  }
-
-  /**
-     * It validates a phone number.
-     * @static
-     * @memberof ValidationHelper
-     * @returns {Boolean}
-     */
-  static editRegexNumberCheck(param, joiObject) {
-    return joiObject
-      .string()
-      .pattern(new RegExp('^[0-9]{10,14}$'))
-      .messages({
-        'string.pattern.base': `${param} must be a number between 11 and 14 digits`,
-        'string.empty': `${param} must not be an empty field`,
-        'any.required': `${param}  is a required field`
-      });
-  }
-  /**
      * It validates a email
      * @static
      * @memberof ValidationHelper
@@ -252,6 +173,21 @@ class ValidationHelper {
     return joiObject.string().email().messages({
       'string.email': 'Email is not valid',
       'string.empty': 'Email cannot be an empty field'
+    });
+  }
+
+  /**
+   * It validates a uuid that is not required.
+   * @static
+   * @memberof ValidationHelper
+   * @returns {Boolean}
+   */
+  static editUuidCheck(param, joiObject) {
+    return joiObject.string().pattern(new RegExp('^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$')).messages({
+      'string.pattern.base':
+          `${param} must be a valid uuid`,
+      'string.empty': `${param} must not be an empty field`,
+      'any.required': `${param} is a required field`
     });
   }
 }

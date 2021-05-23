@@ -3,14 +3,10 @@ import { UserService } from '../../services';
 
 const {
   getUser,
-  getUserById
 } = UserService;
 
 const { errorResponse } = Helper;
 const {
-  INVALID_EMAIL,
-  ERROR_VERIFYING_USER,
-  INVALID_USER_ID,
   USER_ALREADY_EXIST,
   USER_EXIST_VERIFICATION_FAIL,
   USER_EMAIL_EXIST_VERIFICATION_FAIL,
@@ -49,48 +45,6 @@ class UserMiddleware {
         req,
         res,
         new ApiError({ message: USER_EMAIL_EXIST_VERIFICATION_FAIL_MSG })
-      );
-    }
-  }
-
-  static async checkIfUserExistById(req, res, next) {
-    try {
-      req.user = await getUserById(req.data.id);
-      return req.user
-        ? next()
-        : errorResponse(
-          req,
-          res,
-          new ApiError({ status: 400, message: INVALID_USER_ID })
-        );
-    } catch (e) {
-      e.status = ERROR_VERIFYING_USER;
-      Helper.moduleErrLogMessager(e);
-      errorResponse(
-        req,
-        res,
-        new ApiError({ message: ERROR_VERIFYING_USER })
-      );
-    }
-  }
-
-  static async findUserByEmail(req, res, next) {
-    try {
-      req.data = await getUser(req.body.email, req.body.username);
-      return req.data
-        ? next()
-        : errorResponse(
-          req,
-          res,
-          new ApiError({ status: 400, message: INVALID_EMAIL })
-        );
-    } catch (e) {
-      e.status = ERROR_VERIFYING_USER;
-      Helper.moduleErrLogMessager(e);
-      errorResponse(
-        req,
-        res,
-        new ApiError({ message: ERROR_VERIFYING_USER })
       );
     }
   }

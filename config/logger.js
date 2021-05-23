@@ -69,7 +69,7 @@ class Logger {
       }
     };
     this.debugMode = options.debugMode === true || options.debugMode === undefined;
-    this.environment = config.AWAKE_NODE_ENV || 'development';
+    this.environment = config.MYMUSIC_NODE_ENV || 'development';
   }
 
   /**

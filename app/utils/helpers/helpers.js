@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import genericError from '../error/generic';
 import constants from '../constants';
-import DBError from '../error/db.error';
 
 require('dotenv').config();
 
@@ -80,26 +79,10 @@ class Helper {
    * @memberof Helpers
    * @returns {object } - A new object containing essential user properties and jwt token.
    */
-  static addTokenToData(data) {
+  static addDataToToken(data) {
     const { id, email, role } = data;
     const token = Helper.generateToken({ id, email, role });
     return token;
-  }
-
-  /**
-   * Creates DB Error object and logs it with respective error message and status.
-   * @static
-   * @param { String | Object } data - The data.
-   * @memberof Helper
-   * @returns { Object } - It returns an Error Object.
-   */
-  static makeError({ error, status }) {
-    const dbError = new DBError({
-      status,
-      message: error.message
-    });
-    Helper.moduleErrLogMessager(dbError);
-    return dbError;
   }
 
   /**

@@ -1,13 +1,12 @@
 import Joi from 'joi';
 import { ValidationHelper } from '../utils/helpers';
 
-const { stringCheck } = ValidationHelper;
+const { stringCheck, enumCheck } = ValidationHelper;
 
 const albumCreateSchema = Joi.object({
-  artistName: stringCheck('First name', Joi, 3),
-  description: stringCheck('First name', Joi, 3),
-  genre: stringCheck('First name', Joi, 3),
-  picture: stringCheck('First name', Joi, 3)
+  albumName: stringCheck('Album name', Joi, 3),
+  description: stringCheck('Description', Joi, 3),
+  genre: enumCheck(['Jazz', 'Hip-Hop', 'Classical', 'Gospel', 'Rock', 'Soul', 'Reggae', 'R&B', 'Country'], 'genre', Joi),
 });
 
 export default albumCreateSchema;

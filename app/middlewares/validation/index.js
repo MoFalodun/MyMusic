@@ -1,7 +1,6 @@
-import { Helper, ApiError, constants } from '../../utils';
+import { Helper, ApiError } from '../../utils';
 
 const { errorResponse, validateInput } = Helper;
-const { PARAM_ABSENT } = constants;
 /**
  * @class ValidationMiddleware
  */
@@ -21,26 +20,6 @@ class ValidationMiddleware {
         });
         errorResponse(req, res, apiError);
       }
-    };
-  }
-
-  /**
-   * @static
-   */
-  static validateParam(schema) {
-    return (req, res, next) => {
-      const data = req.params[schema];
-      if (data.length === 36) {
-        return next();
-      }
-      errorResponse(
-        req,
-        res,
-        new ApiError({
-          status: 400,
-          message: PARAM_ABSENT(schema)
-        })
-      );
     };
   }
 }

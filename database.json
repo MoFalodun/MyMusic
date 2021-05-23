@@ -2,5 +2,11 @@
     "development": {
       "ENV": "MYMUSIC_POSTGRES_DEV_URL"
     },
+    "test": {
+      "ENV": "MYMUSIC_POSTGRES_TEST_URL"
+    },
+    "defaultEnv": {
+      "ENV": "MYMUSIC_NODE_ENV"
+    },
     "sql-file": true
-  }
+}

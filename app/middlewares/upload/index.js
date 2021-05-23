@@ -44,22 +44,5 @@ class UploadMiddleware {
       );
     }
   }
-
-  static async albumUpload(req, res, next) {
-    try {
-      const { tempFilePath: path, name: fileName } = req.files.pictures;
-      const data = await uploadConfig(path, fileName);
-      req.body.pictures = data.Location;
-      next();
-    } catch (e) {
-      e.status = RESOURCE_UPLOAD_ERROR_STATUS('PICTURE');
-      Helper.moduleErrLogMessager(e);
-      errorResponse(
-        req,
-        res,
-        new ApiError({ message: RESOURCE_UPLOAD_ERROR_MSG('PICTURE') })
-      );
-    }
-  }
 }
 export default UploadMiddleware;
