@@ -25,16 +25,16 @@ class SongController {
         artistId: req.user.id });
       await song.save();
       successResponse(res, {
-        message: RESOURCE_CREATE_SUCCESS('SONG'),
+        message: RESOURCE_CREATE_SUCCESS('Song'),
         status: 200
       });
     } catch (e) {
       const dbError = new DBError({
-        status: RESOURCE_CREATE_ERROR_STATUS('SONG'),
+        status: RESOURCE_CREATE_ERROR_STATUS('Song'),
         message: e.message
       });
       Helper.moduleErrLogMessager(dbError);
-      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('SONG') }));
+      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('Song') }));
     }
   }
 }

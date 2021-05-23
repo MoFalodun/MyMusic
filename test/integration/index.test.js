@@ -132,7 +132,7 @@ describe('User Activities', () => {
           done();
         });
     });
-    it('should throw an error when  an user tries to add a song', (done) => {
+    it('should throw an error when an user tries to add a song', (done) => {
       chai.request(app).post('/song/').set({ Authorization: `Bearer ${userToken}` })
         .field('name', songInfo.name)
         .field('lyrics', songInfo.lyrics)
@@ -143,6 +143,21 @@ describe('User Activities', () => {
           expect(res.body.status).to.equal('fail');
           expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
           expect(res.statusCode).to.equal(403);
+          done();
+        });
+    });
+    it('should throw an error when the album Id does not exist', (done) => {
+      chai.request(app).post('/song/').set({ Authorization: `Bearer ${artistToken}` })
+        .field('name', songInfo.name)
+        .field('lyrics', songInfo.lyrics)
+        .field('genre', songInfo.genre)
+        .field('albumId', '6e34bb7a-a337-43ee-aa67-8d4ecbb1a5ed')
+        .attach('music', musicPath)
+        .attach('pictures', picturePath)
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('Album does not exist');
+          expect(res.statusCode).to.equal(409);
           done();
         });
     });

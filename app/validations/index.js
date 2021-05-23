@@ -1,3 +1,3 @@
 export { loginSchema, forgotPasswordSchema, resetPasswordSchema } from './auth';
-export { userSignUpSchema, updateUserSchema, userLoginSchema, signupSchema } from './user';
+export { userSignUpSchema, updateUserSchema, userLoginSchema } from './user';
 export { artistSignUpSchema, updateArtistSchema } from './artist';

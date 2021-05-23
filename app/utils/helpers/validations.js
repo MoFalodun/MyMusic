@@ -175,5 +175,20 @@ class ValidationHelper {
       'string.empty': 'Email cannot be an empty field'
     });
   }
+
+  /**
+   * It validates a uuid that is not required.
+   * @static
+   * @memberof ValidationHelper
+   * @returns {Boolean}
+   */
+  static editUuidCheck(param, joiObject) {
+    return joiObject.string().pattern(new RegExp('^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$')).messages({
+      'string.pattern.base':
+          `${param} must be a valid uuid`,
+      'string.empty': `${param} must not be an empty field`,
+      'any.required': `${param} is a required field`
+    });
+  }
 }
 export default ValidationHelper;

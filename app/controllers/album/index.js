@@ -25,16 +25,16 @@ class AlbumController {
       const album = new AlbumModel({ ...req.body, artistId: id });
       await album.save();
       successResponse(res, {
-        message: RESOURCE_CREATE_SUCCESS('ALBUM'),
+        message: RESOURCE_CREATE_SUCCESS('Album'),
         status: 200
       });
     } catch (e) {
       const dbError = new DBError({
-        status: RESOURCE_CREATE_ERROR_STATUS('ALBUM'),
+        status: RESOURCE_CREATE_ERROR_STATUS('Album'),
         message: e.message
       });
       Helper.moduleErrLogMessager(dbError);
-      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('ALBUM') }));
+      next(new ApiError({ message: RESOURCE_CREATE_ERROR_MSG('Album') }));
     }
   }
 }
