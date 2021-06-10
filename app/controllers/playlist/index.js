@@ -39,7 +39,7 @@ class PlaylistController {
       const data = await playlist.save();
       successResponse(res, {
         message: RESOURCE_CREATE_SUCCESS('Playlist'),
-        status: 200,
+        code: 201,
         data
       });
     } catch (e) {
@@ -63,12 +63,11 @@ class PlaylistController {
    */
   static async addSongsToPlaylist(req, res, next) {
     try {
-      const { songId, playlistId } = req.query;
-      const playlist = new PlaylistSongsModel({ songId, playlistId });
+      const { id, playlistId } = req.query;
+      const playlist = new PlaylistSongsModel({ songId: id, playlistId });
       await playlist.save();
       successResponse(res, {
-        message: RESOURCE_UPDATE_SUCCESS('Playlist'),
-        status: 200,
+        message: RESOURCE_UPDATE_SUCCESS('Playlist')
       });
     } catch (e) {
       const dbError = new DBError({
@@ -94,7 +93,6 @@ class PlaylistController {
     try {
       const playlistSongs = await getPlaylistSongs(req.playlist.id);
       return res
-        .status(200)
         .json({
           status: 'success',
           message: RESOURCE_FETCH_SUCCESS('Playlist'),
@@ -121,7 +119,6 @@ class PlaylistController {
       await playlistLike.save();
       successResponse(res, {
         message: `Playlist ${req.decision}d successfully`,
-        status: 200,
       });
     } catch (e) {
       const dbError = new DBError({

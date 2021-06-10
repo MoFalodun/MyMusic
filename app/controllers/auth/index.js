@@ -29,6 +29,7 @@ class AuthController {
       await user.save();
       successResponse(res, {
         message: USER_SIGNUP_SUCCESS,
+        code: 201
       });
     } catch (e) {
       const dbError = new DBError({
@@ -55,7 +56,7 @@ class AuthController {
       await user.save();
       successResponse(res, {
         message: USER_SIGNUP_SUCCESS,
-        status: 201
+        code: 201
       });
     } catch (e) {
       const dbError = new DBError({
@@ -81,7 +82,6 @@ class AuthController {
     const { password, ...user } = req.user;
     if (compareHash(req.body.password, password)) {
       return successResponse(res, {
-        status: 200,
         message: LOGIN_USER_SUCCESSFULLY,
         data: {
           token,

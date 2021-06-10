@@ -25,7 +25,7 @@ class RatingController {
       await rating.save();
       return successResponse(res, {
         message: RESOURCE_CREATE_SUCCESS('Rating'),
-        status: 200,
+        code: 201,
         rating
       });
     } catch (e) {

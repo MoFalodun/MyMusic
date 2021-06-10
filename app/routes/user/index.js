@@ -39,7 +39,7 @@ router.post(
 );
 
 router.post(
-  '/add-song/',
+  '/add-song',
   authenticate,
   userValidator,
   checkIfPlaylistExist,
@@ -52,8 +52,8 @@ router.post(
   '/playlist/likes/:id',
   authenticate,
   userValidator,
-  checkIfPlaylistExist,
   validate(playlistLikeSchema),
+  checkIfPlaylistExist,
   checkUniqueDecision,
   likePlaylist
 );

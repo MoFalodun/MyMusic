@@ -9,7 +9,7 @@ export default {
       RETURNING *
      ;`,
   fetchPlaylistByName: 'SELECT * FROM playlist WHERE playlist_name ILIKE $1 AND owner_id = $2;',
-  fetchPlaylistById: 'SELECT * FROM playlist WHERE id = $1;',
+  fetchPlaylistById: 'SELECT playlist_name FROM playlist WHERE id = $1;',
   fetchPlaylistByOwner: 'SELECT * FROM playlist WHERE id = $1 AND owner_id = $2;',
   createPlaylistSongs: `
       INSERT INTO playlist_songs(

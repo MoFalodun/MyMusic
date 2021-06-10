@@ -14,8 +14,8 @@ router.post(
   '/:id',
   authenticate,
   userValidator,
-  checkIfSongExist,
   validate(ratingCreateSchema),
+  checkIfSongExist,
   rate
 );
 

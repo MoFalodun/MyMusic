@@ -8,6 +8,7 @@ const {
   INVALID_PERMISSION,
   INVALID_CREDENTIALS,
   ACCESS_REVOKED,
+  FORBIDDEN
 } = constants;
 
 export default {
@@ -19,4 +20,5 @@ export default {
   conflictSignupError: new ApiError({ message: INVALID_CREDENTIALS, status: 409 }),
   conflictError: new ApiError({ message: INVALID_CREDENTIALS, status: 409 }),
   authRequired: new ApiError({ message: AUTH_REQUIRED, status: 401 }),
+  forbidden: new ApiError({ message: FORBIDDEN, status: 403 }),
 };

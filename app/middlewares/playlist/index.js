@@ -40,38 +40,49 @@ class PlaylistMiddleware {
       req.playlist = playlist;
       return playlist
         ? next()
-        : errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_NOT_EXISTS('Playlist') }));
+        : errorResponse(req, res, new ApiError({ status: 404, message: RESOURCE_NOT_EXISTS('Playlist name') }));
     } catch (e) {
-      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist');
+      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist name');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
         res,
-        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist') })
+        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist name') })
       );
     }
   }
 
+  /**
+   * Validates users playlist id, with emphasis on the
+   * existence of a playlist with the provided id.
+   * @static
+   * @param { Object } req - The request from the endpoint.
+   * @param { Object } res - The response returned by the method.
+   * @param { function } next - Calls the next handle.
+   * @returns { JSON | Null } - Returns error response if validation fails or Null if otherwise.
+   * @memberof PlaylistMiddleware
+   *
+   */
   static async checkIfPlaylistExist(req, res, next) {
     try {
       const playlist = await getPlaylistById(req.params.id || req.query.playlistId);
       return playlist
         ? next()
-        : errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_NOT_EXISTS('Playlist') }));
+        : errorResponse(req, res, new ApiError({ status: 404, message: RESOURCE_NOT_EXISTS('Playlist') }));
     } catch (e) {
-      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist');
+      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist id');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
         res,
-        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist') })
+        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist id') })
       );
     }
   }
 
   /**
    * Validates users playlist name, with emphasis on the
-   * existence of a playlist with the provided name and userId.
+   * existence of a unique playlist with the provided name and userId.
    * @static
    * @param { Object } req - The request from the endpoint.
    * @param { Object } res - The response returned by the method.
@@ -87,7 +98,7 @@ class PlaylistMiddleware {
         ? errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_EXISTS('Playlist') }))
         : next();
     } catch (e) {
-      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist');
+      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist name');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
@@ -97,22 +108,45 @@ class PlaylistMiddleware {
     }
   }
 
+  /**
+   * Validates playlist owner, with emphasis on the
+   * existence of a playlist with the provided id and userId.
+   * @static
+   * @param { Object } req - The request from the endpoint.
+   * @param { Object } res - The response returned by the method.
+   * @param { function } next - Calls the next handle.
+   * @returns { JSON | Null } - Returns error response if validation fails or Null if otherwise.
+   * @memberof PlaylistMiddleware
+   *
+   */
   static async checkPlaylistOwner(req, res, next) {
     try {
       const owner = await getPlaylistOwner(req.query.playlistId, req.user.id);
       return owner
         ? next()
-        : errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_EXISTS('Playlist') }));
+        : errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_EXISTS('Playlist owner') }));
     } catch (e) {
-      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist');
+      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist owner');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
         res,
-        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist') })
+        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist owner') })
       );
     }
   }
+
+  /**
+   * Validates users decision on a playlist, with emphasis on the
+   * existence of a playlist decision with the provided playlist id and userId.
+   * @static
+   * @param { Object } req - The request from the endpoint.
+   * @param { Object } res - The response returned by the method.
+   * @param { function } next - Calls the next handle.
+   * @returns { JSON | Null } - Returns error response if validation fails or Null if otherwise.
+   * @memberof PlaylistMiddleware
+   *
+   */
 
   static async checkUniqueDecision(req, res, next) {
     try {
@@ -124,12 +158,12 @@ class PlaylistMiddleware {
       req.decision = req.body.decision;
       return next();
     } catch (e) {
-      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist');
+      e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Playlist decision');
       Helper.moduleErrLogMessager(e);
       errorResponse(
         req,
         res,
-        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist') })
+        new ApiError({ message: RESOURCE_EXISTS_VERIFICATION_FAIL_MSG('Playlist decision') })
       );
     }
   }

@@ -14,6 +14,7 @@ export default {
   DB_ERROR_STATUS: 'DB_PROCESS_FAILED',
   DB_ERROR: 'A database error occurred, either in postgres',
   INVALID_PERMISSION: 'Permission denied. Invalid credentials provided',
+  FORBIDDEN: 'Access forbidden. You do not have the required access.',
   USER_SIGNUP_ERROR: 'Sign up failed. It is not you, it is us.',
   ARTIST_SIGNUP_ERROR: 'Sign up failed. It is not you, it is us.',
   ARTIST_SIGNUP_ERROR_STATUS: 'ARTIST_SIGNUP_ERROR',

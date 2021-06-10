@@ -5,7 +5,9 @@ import { Helper, constants, ApiError, DBError } from '../../utils';
 const { RESOURCE_CREATE_SUCCESS,
   RESOURCE_CREATE_ERROR_STATUS, RESOURCE_CREATE_ERROR_MSG,
   RESOURCE_FETCH_ERROR,
-  INTERNAL_SERVER_ERROR } = constants;
+  INTERNAL_SERVER_ERROR,
+  RESOURCE_FETCH_SUCCESS
+} = constants;
 const { successResponse } = Helper;
 const { errorResponse } = Helper;
 const { getSongById, getAllSongs, getAllSongsByRating } = SongService;
@@ -32,7 +34,7 @@ class SongController {
       const data = await song.save();
       successResponse(res, {
         message: RESOURCE_CREATE_SUCCESS('Song'),
-        status: 200,
+        code: 201,
         data
       });
     } catch (e) {
@@ -62,9 +64,8 @@ class SongController {
         .status(200)
         .json({
           status: 'success',
-          message: 'Song fetched successfully',
-          // eslint-disable-next-line radix
-          data: { ...song, rating: parseFloat(rating).toFixed(1) || null },
+          message: RESOURCE_FETCH_SUCCESS('Song'),
+          data: { ...song, rating: parseFloat(rating, 10).toFixed(1) || null },
         });
     } catch (e) {
       e.status = RESOURCE_FETCH_ERROR('Song');
@@ -91,7 +92,7 @@ class SongController {
         .status(200)
         .json({
           status: 'success',
-          message: 'Songs fetched successfully',
+          message: RESOURCE_FETCH_SUCCESS('Songs'),
           data: songs
         });
     } catch (e) {

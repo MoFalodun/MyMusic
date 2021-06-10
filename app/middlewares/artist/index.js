@@ -74,10 +74,21 @@ class ArtistMiddleware {
     }
   }
 
+  /**
+   * Validates artist's login credentials, with emphasis on the
+   * the sign_up role.
+   * @static
+   * @param { Object } req - The request from the endpoint.
+   * @param { Object } res - The response returned by the method.
+   * @param { function } next - Calls the next handle.
+   * @returns { JSON | Null } - Returns error response if validation fails or Null if otherwise.
+   * @memberof ArtistMiddleware
+   *
+   */
   static async artistValidator(req, res, next) {
     return req.user.role === 'artist'
       ? next()
-      : errorResponse(req, res, genericErrors.unAuthorized);
+      : errorResponse(req, res, genericErrors.forbidden);
   }
 }
 export default ArtistMiddleware;

@@ -31,10 +31,10 @@ class SongMiddleware {
    */
   static async checkIfSongExist(req, res, next) {
     try {
-      const song = await getSongById(req.query.songId || req.params.id);
+      const song = await getSongById(req.query.id || req.params.id);
       return song
         ? next()
-        : errorResponse(req, res, new ApiError({ status: 409, message: RESOURCE_NOT_EXISTS('Song') }));
+        : errorResponse(req, res, new ApiError({ status: 404, message: RESOURCE_NOT_EXISTS('Song') }));
     } catch (e) {
       e.status = RESOURCE_EXISTS_VERIFICATION_FAIL('Song');
       Helper.moduleErrLogMessager(e);

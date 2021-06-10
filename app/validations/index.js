@@ -1,4 +1,4 @@
-export { loginSchema, forgotPasswordSchema, resetPasswordSchema } from './auth';
-export { userSignUpSchema, updateUserSchema, userLoginSchema } from './user';
-export { artistSignUpSchema, updateArtistSchema } from './artist';
-export { playlistCreateSchema, playlistLikeSchema } from './playlist';
+export * from './auth';
+export * from './user';
+export * from './artist';
+export * from './playlist';

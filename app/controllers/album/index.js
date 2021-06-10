@@ -26,7 +26,7 @@ class AlbumController {
       const data = await album.save();
       successResponse(res, {
         message: RESOURCE_CREATE_SUCCESS('Album'),
-        status: 200,
+        code: 201,
         data
       });
     } catch (e) {

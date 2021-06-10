@@ -22,7 +22,7 @@ const picturePath = 'test/integration/test.png';
 const musicPath = 'test/integration/test.mp3';
 const {
   USER_ALREADY_EXIST,
-  INVALID_PERMISSION
+  FORBIDDEN
 } = constants;
 
 describe('User Activities', () => {
@@ -95,7 +95,7 @@ describe('User Activities', () => {
     });
   });
   describe('Album Route', () => {
-    it('should allow an artist add an album successfully', (done) => {
+    it('should allow an artist create an album successfully', (done) => {
       chai.request(app).post('/album/').set({ Authorization: `Bearer ${artistToken}` })
         .field('albumName', albumInfo.albumName)
         .field('description', albumInfo.description)
@@ -104,12 +104,12 @@ describe('User Activities', () => {
         .end((err, res) => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.be.a('string').equal('Album created successfully');
-          expect(res.statusCode).to.equal(200);
+          expect(res.statusCode).to.equal(201);
           albumId = res.body.data.id;
           done();
         });
     });
-    it('should throw an error when  an user tries to add an album', (done) => {
+    it('should throw an error when a user tries to add an album', (done) => {
       chai.request(app).post('/album/').set({ Authorization: `Bearer ${userToken}` })
         .field('albumName', albumInfo.albumName)
         .field('description', albumInfo.description)
@@ -117,7 +117,7 @@ describe('User Activities', () => {
         .attach('pictures', path)
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
-          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
           expect(res.statusCode).to.equal(403);
           done();
         });
@@ -134,7 +134,7 @@ describe('User Activities', () => {
         .end((err, res) => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.be.a('string').equal('Song created successfully');
-          expect(res.statusCode).to.equal(200);
+          expect(res.statusCode).to.equal(201);
           songId = res.body.data.id;
           done();
         });
@@ -148,7 +148,7 @@ describe('User Activities', () => {
         .attach('pictures', picturePath)
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
-          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
           expect(res.statusCode).to.equal(403);
           done();
         });
@@ -190,7 +190,7 @@ describe('User Activities', () => {
         .end((err, res) => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.be.a('string').equal('Rating created successfully');
-          expect(res.statusCode).to.equal(200);
+          expect(res.statusCode).to.equal(201);
           done();
         });
     });
@@ -199,7 +199,7 @@ describe('User Activities', () => {
         .send({ rating: 3 })
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
-          expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+          expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
           expect(res.statusCode).to.equal(403);
           done();
         });
@@ -210,7 +210,7 @@ describe('User Activities', () => {
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
           expect(res.body.message).to.be.a('string').equal('Song does not exist');
-          expect(res.statusCode).to.equal(409);
+          expect(res.statusCode).to.equal(404);
           done();
         });
     });
@@ -272,7 +272,7 @@ describe('User Activities', () => {
           .end((err, res) => {
             expect(res.body.status).to.equal('success');
             expect(res.body.message).to.be.a('string').equal('Playlist created successfully');
-            expect(res.statusCode).to.equal(200);
+            expect(res.statusCode).to.equal(201);
             playlistId = res.body.data.id;
             id = playlistId;
             done();
@@ -283,7 +283,7 @@ describe('User Activities', () => {
           .send({ playlistName })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
-            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
             expect(res.statusCode).to.equal(403);
             done();
           });
@@ -311,8 +311,8 @@ describe('User Activities', () => {
     });
     describe('Add songs to playlist', () => {
       it('should allow a user add a song to the playlist', (done) => {
-        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
-          .query({ playlistId, songId })
+        chai.request(app).post('/user/add-song').set({ Authorization: `Bearer ${userToken}` })
+          .query({ playlistId, id: `${songId}` })
           .end((err, res) => {
             expect(res.body.status).to.equal('success');
             expect(res.body.message).to.be.a('string').equal('Playlist updated successfully');
@@ -321,7 +321,7 @@ describe('User Activities', () => {
           });
       });
       it('should throw an error if the user is not logged in', (done) => {
-        chai.request(app).post('/user/add-song/').set({ Authorization: '' })
+        chai.request(app).post('/user/add-song').set({ Authorization: '' })
           .query({ playlistId, songId })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
@@ -331,32 +331,32 @@ describe('User Activities', () => {
           });
       });
       it('should throw an error if an artist tries to create a playlist', (done) => {
-        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${artistToken}` })
+        chai.request(app).post('/user/add-song').set({ Authorization: `Bearer ${artistToken}` })
           .query({ playlistId, songId })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
-            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
             expect(res.statusCode).to.equal(403);
             done();
           });
       });
       it('should throw an error if the song does not exist', (done) => {
-        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
+        chai.request(app).post('/user/add-song').set({ Authorization: `Bearer ${userToken}` })
           .query({ playlistId, albumId })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
             expect(res.body.message).to.be.a('string').equal('Song does not exist');
-            expect(res.statusCode).to.equal(409);
+            expect(res.statusCode).to.equal(404);
             done();
           });
       });
       it('should throw an error if the playlist does not exist', (done) => {
-        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
+        chai.request(app).post('/user/add-song').set({ Authorization: `Bearer ${userToken}` })
           .query({ playlistId: '15', songId })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
             expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
-            expect(res.statusCode).to.equal(409);
+            expect(res.statusCode).to.equal(404);
             done();
           });
       });
@@ -387,7 +387,7 @@ describe('User Activities', () => {
           .send({ decision: 'like' })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
-            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
             expect(res.statusCode).to.equal(403);
             done();
           });
@@ -398,7 +398,7 @@ describe('User Activities', () => {
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
             expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
-            expect(res.statusCode).to.equal(409);
+            expect(res.statusCode).to.equal(404);
             done();
           });
       });
@@ -459,18 +459,18 @@ describe('User Activities', () => {
           .query({ name: `${playlistName}` })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
-            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
             expect(res.statusCode).to.equal(403);
             done();
           });
       });
-      it('should throw an error if the playlist does not exist', (done) => {
+      it('should throw an error if the playlist name does not exist', (done) => {
         chai.request(app).get('/user/playlist/').set({ Authorization: `Bearer ${userToken}` })
           .query({ name: 'David' })
           .end((err, res) => {
             expect(res.body.status).to.equal('fail');
-            expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
-            expect(res.statusCode).to.equal(409);
+            expect(res.body.message).to.be.a('string').equal('Playlist name does not exist');
+            expect(res.statusCode).to.equal(404);
             done();
           });
       });
@@ -490,7 +490,7 @@ describe('User Activities', () => {
       chai.request(app).get('/song/').set({ Authorization: `Bearer ${artistToken}` })
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
-          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
           expect(res.statusCode).to.equal(403);
           done();
         });
@@ -519,7 +519,7 @@ describe('User Activities', () => {
       chai.request(app).get('/song/rating').set({ Authorization: `Bearer ${artistToken}` })
         .end((err, res) => {
           expect(res.body.status).to.equal('fail');
-          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.body.message).to.be.a('string').equal(FORBIDDEN);
           expect(res.statusCode).to.equal(403);
           done();
         });
