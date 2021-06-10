@@ -5,7 +5,7 @@ import { json, urlencoded } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import config from './env';
-import routes from '../app/routes';
+import router from '../app/routes';
 import { Helper, genericErrors, constants } from '../app/utils';
 
 const { errorResponse, successResponse } = Helper;
@@ -23,7 +23,7 @@ const appConfig = (app) => {
   app.use(json());
   app.use(urlencoded({ extended: true }));
   app.use(expressFileUpload({ useTempFiles: true }));
-  app.use(routes);
+  app.use(router);
 
   app.get('/', (req, res) => successResponse(res, { message: WELCOME }));
   app.use((req, res, next) => {

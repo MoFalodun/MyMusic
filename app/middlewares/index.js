@@ -4,6 +4,8 @@ import ValidationMiddleware from './validation';
 import AuthMiddleware from './auth';
 import UploadMiddleware from './upload';
 import AlbumMiddleware from './album';
+import PlaylistMiddleware from './playlist';
+import SongMiddleware from './song';
 
 export {
   UserMiddleware,
@@ -11,5 +13,7 @@ export {
   ArtistMiddleware,
   AuthMiddleware,
   UploadMiddleware,
-  AlbumMiddleware
+  AlbumMiddleware,
+  PlaylistMiddleware,
+  SongMiddleware
 };

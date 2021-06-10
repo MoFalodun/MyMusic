@@ -10,16 +10,18 @@ class ValidationHelper {
      * @memberof ValidationHelper
      * @returns {Boolean}
      */
-  static numberCheck(param, joiObject, min = 1) {
+  static numberCheck(param, joiObject, min = 1, max) {
     return joiObject
       .number()
       .required()
       .min(min)
+      .max(max)
       .messages({
         'any.required': `${param} is a required field`,
         'number.base': `${param} must be a number`,
         'number.empty': `${param} cannot be an empty field`,
-        'number.min': `${param} can not be lesser than ${min}`
+        'number.min': `${param} can not be lesser than ${min}`,
+        'number.max': `${param} can not be greater than ${max}`
       });
   }
 

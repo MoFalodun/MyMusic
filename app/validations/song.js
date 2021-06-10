@@ -4,8 +4,8 @@ import { ValidationHelper } from '../utils/helpers';
 const { stringCheck, enumCheck, } = ValidationHelper;
 
 const songCreateSchema = Joi.object({
-  name: stringCheck('First name', Joi, 3),
-  lyrics: stringCheck('First name', Joi, 3),
+  name: stringCheck('name', Joi, 3),
+  lyrics: stringCheck('lyrics', Joi, 3),
   genre: enumCheck(['Jazz', 'Hip-Hop', 'Classical', 'Gospel', 'Rock', 'Soul', 'Reggae', 'R&B', 'Country'], 'genre', Joi),
 });
 

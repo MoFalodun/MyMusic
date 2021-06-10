@@ -1,8 +1,9 @@
+/* eslint-disable max-lines */
 /* eslint-disable max-lines-per-function */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app';
-import { userInfo, userLogin, fakeLoginObj, invalidSignUpObj } from '../fixtures/user';
+import { userInfo, userLogin, fakeLoginObj, invalidSignUpObj, playlistName, duplicatePlaylistName } from '../fixtures/user';
 import { artistInfo, artistLogin } from '../fixtures/artist';
 import { albumInfo } from '../fixtures/album';
 import { songInfo } from '../fixtures/song';
@@ -12,6 +13,10 @@ const { expect } = chai;
 chai.use(chaiHttp);
 let artistToken;
 let userToken;
+let albumId;
+let songId;
+let playlistId;
+let id;
 const path = 'test/integration/test.png';
 const picturePath = 'test/integration/test.png';
 const musicPath = 'test/integration/test.mp3';
@@ -100,6 +105,7 @@ describe('User Activities', () => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.be.a('string').equal('Album created successfully');
           expect(res.statusCode).to.equal(200);
+          albumId = res.body.data.id;
           done();
         });
     });
@@ -117,7 +123,7 @@ describe('User Activities', () => {
         });
     });
   });
-  describe('Song Route', () => {
+  describe('Create song', () => {
     it('should allow an artist add a song successfully', (done) => {
       chai.request(app).post('/song/').set({ Authorization: `Bearer ${artistToken}` })
         .field('name', songInfo.name)
@@ -129,6 +135,7 @@ describe('User Activities', () => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.be.a('string').equal('Song created successfully');
           expect(res.statusCode).to.equal(200);
+          songId = res.body.data.id;
           done();
         });
     });
@@ -158,6 +165,391 @@ describe('User Activities', () => {
           expect(res.body.status).to.equal('fail');
           expect(res.body.message).to.be.a('string').equal('Album does not exist');
           expect(res.statusCode).to.equal(409);
+          done();
+        });
+    });
+    it('should throw an error when the artist is not logged in', (done) => {
+      chai.request(app).post('/song/').set({ Authorization: '' })
+        .field('name', songInfo.name)
+        .field('lyrics', songInfo.lyrics)
+        .field('genre', songInfo.genre)
+        .attach('pictures', picturePath)
+        .attach('music', musicPath)
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+          expect(res.statusCode).to.equal(401);
+          done();
+        });
+    });
+  });
+  describe('Rating Route', () => {
+    it('should allow a user rate a song successfully', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .send({ rating: 3 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Rating created successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should throw an error when an artist tries to rate a song', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${artistToken}` })
+        .send({ rating: 3 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+          expect(res.statusCode).to.equal(403);
+          done();
+        });
+    });
+    it('should throw an error when the song Id does not exist', (done) => {
+      chai.request(app).post(`/rating/${albumId}`).set({ Authorization: `Bearer ${userToken}` })
+        .send({ rating: 3 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('Song does not exist');
+          expect(res.statusCode).to.equal(409);
+          done();
+        });
+    });
+    it('should throw an error if the user is not logged in', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: '' })
+        .send({ rating: 3 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+          expect(res.statusCode).to.equal(401);
+          done();
+        });
+    });
+    it('should throw an error if the rating is more than 5', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .send({ rating: 6 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('rating can not be greater than 5');
+          expect(res.statusCode).to.equal(400);
+          done();
+        });
+    });
+    it('should throw an error if the rating is less than 1', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .send({ rating: 0 })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('rating can not be lesser than 1');
+          expect(res.statusCode).to.equal(400);
+          done();
+        });
+    });
+    it('should throw an error if rating is not inputted', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('rating is a required field');
+          expect(res.statusCode).to.equal(400);
+          done();
+        });
+    });
+    it('should throw an error if rating sent is an empty string', (done) => {
+      chai.request(app).post(`/rating/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .send({ rating: '' })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('rating must be a number');
+          expect(res.statusCode).to.equal(400);
+          done();
+        });
+    });
+  });
+  describe('User Route', () => {
+    describe('Create playlist', () => {
+      it('should allow a user create a playlist', (done) => {
+        chai.request(app).post('/user/playlist').set({ Authorization: `Bearer ${userToken}` })
+          .send({ playlistName })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist created successfully');
+            expect(res.statusCode).to.equal(200);
+            playlistId = res.body.data.id;
+            id = playlistId;
+            done();
+          });
+      });
+      it('should throw an error if an artist tries to create a playlist', (done) => {
+        chai.request(app).post('/user/playlist').set({ Authorization: `Bearer ${artistToken}` })
+          .send({ playlistName })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.statusCode).to.equal(403);
+            done();
+          });
+      });
+      it('should throw an error if the playlist name is less than 3 characters', (done) => {
+        chai.request(app).post('/user/playlist').set({ Authorization: `Bearer ${userToken}` })
+          .send({ playlistName: 'c' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Playlist Name can not be lesser than 3 characters');
+            expect(res.statusCode).to.equal(400);
+            done();
+          });
+      });
+      it('should throw an error if the duplicate playlist name', (done) => {
+        chai.request(app).post('/user/playlist').set({ Authorization: `Bearer ${userToken}` })
+          .send({ playlistName: duplicatePlaylistName })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Playlist exists already.');
+            expect(res.statusCode).to.equal(409);
+            done();
+          });
+      });
+    });
+    describe('Add songs to playlist', () => {
+      it('should allow a user add a song to the playlist', (done) => {
+        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
+          .query({ playlistId, songId })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist updated successfully');
+            expect(res.statusCode).to.equal(200);
+            done();
+          });
+      });
+      it('should throw an error if the user is not logged in', (done) => {
+        chai.request(app).post('/user/add-song/').set({ Authorization: '' })
+          .query({ playlistId, songId })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+            expect(res.statusCode).to.equal(401);
+            done();
+          });
+      });
+      it('should throw an error if an artist tries to create a playlist', (done) => {
+        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${artistToken}` })
+          .query({ playlistId, songId })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.statusCode).to.equal(403);
+            done();
+          });
+      });
+      it('should throw an error if the song does not exist', (done) => {
+        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
+          .query({ playlistId, albumId })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Song does not exist');
+            expect(res.statusCode).to.equal(409);
+            done();
+          });
+      });
+      it('should throw an error if the playlist does not exist', (done) => {
+        chai.request(app).post('/user/add-song/').set({ Authorization: `Bearer ${userToken}` })
+          .query({ playlistId: '15', songId })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
+            expect(res.statusCode).to.equal(409);
+            done();
+          });
+      });
+    });
+    describe('Like a playlist', () => {
+      it('should allow a user like/dislike a playlist', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: `Bearer ${userToken}` })
+          .send({ decision: 'like' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist liked successfully');
+            expect(res.statusCode).to.equal(200);
+            done();
+          });
+      });
+      it('should throw an error if the user is not logged in', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: '' })
+          .send({ decision: 'like' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+            expect(res.statusCode).to.equal(401);
+            done();
+          });
+      });
+      it('should throw an error if an artist tries to like a playlist', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: `Bearer ${artistToken}` })
+          .send({ decision: 'like' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.statusCode).to.equal(403);
+            done();
+          });
+      });
+      it('should throw an error if the playlist does not exist', (done) => {
+        chai.request(app).post('/user/playlist/likes/15').set({ Authorization: `Bearer ${userToken}` })
+          .send({ decision: 'dislike' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
+            expect(res.statusCode).to.equal(409);
+            done();
+          });
+      });
+      it('should throw an error if the decision sent is not allowed', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: `Bearer ${userToken}` })
+          .send({ decision: 'love' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Please enter a valid decision');
+            expect(res.statusCode).to.equal(400);
+            done();
+          });
+      });
+      it('should allow a user edit their decision', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: `Bearer ${userToken}` })
+          .send({ decision: 'dislike' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist disliked successfully');
+            expect(res.statusCode).to.equal(200);
+            done();
+          });
+      });
+      it('should change the user\'s decision to neutral', (done) => {
+        chai.request(app).post(`/user/playlist/likes/${id}`).set({ Authorization: `Bearer ${userToken}` })
+          .send({ decision: 'like' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist liked successfully');
+            expect(res.statusCode).to.equal(200);
+            done();
+          });
+      });
+    });
+    describe('Get a playlist by name', () => {
+      it('should allow a user get a playlist', (done) => {
+        chai.request(app).get('/user/playlist/').set({ Authorization: `Bearer ${userToken}` })
+          .query({ name: `${playlistName}` })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('success');
+            expect(res.body.message).to.be.a('string').equal('Playlist fetched successfully');
+            expect(res.statusCode).to.equal(200);
+            done();
+          });
+      });
+      it('should throw an error if the user is not logged in', (done) => {
+        chai.request(app).get('/user/playlist/').set({ Authorization: '' })
+          .query({ name: `${playlistName}` })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+            expect(res.statusCode).to.equal(401);
+            done();
+          });
+      });
+      it('should throw an error if an artist tries to get a playlist', (done) => {
+        chai.request(app).get('/user/playlist/').set({ Authorization: `Bearer ${artistToken}` })
+          .query({ name: `${playlistName}` })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Permission denied. Invalid credentials provided');
+            expect(res.statusCode).to.equal(403);
+            done();
+          });
+      });
+      it('should throw an error if the playlist does not exist', (done) => {
+        chai.request(app).get('/user/playlist/').set({ Authorization: `Bearer ${userToken}` })
+          .query({ name: 'David' })
+          .end((err, res) => {
+            expect(res.body.status).to.equal('fail');
+            expect(res.body.message).to.be.a('string').equal('Playlist does not exist');
+            expect(res.statusCode).to.equal(409);
+            done();
+          });
+      });
+    });
+  });
+  describe('Get songs', () => {
+    it('should allow an user get all songs successfully', (done) => {
+      chai.request(app).get('/song/').set({ Authorization: `Bearer ${userToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Songs fetched successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should throw an error when an artist tries to get a song', (done) => {
+      chai.request(app).get('/song/').set({ Authorization: `Bearer ${artistToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.statusCode).to.equal(403);
+          done();
+        });
+    });
+    it('should throw an error when the user is not logged in', (done) => {
+      chai.request(app).get('/song/').set({ Authorization: '' })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+          expect(res.statusCode).to.equal(401);
+          done();
+        });
+    });
+  });
+  describe('Get songs with ratings', () => {
+    it('should allow an user get all songs with their average ratings', (done) => {
+      chai.request(app).get('/song/rating').set({ Authorization: `Bearer ${userToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Songs fetched successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should throw an error when an artist tries to get a song', (done) => {
+      chai.request(app).get('/song/rating').set({ Authorization: `Bearer ${artistToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal(INVALID_PERMISSION);
+          expect(res.statusCode).to.equal(403);
+          done();
+        });
+    });
+    it('should throw an error when the user is not logged in', (done) => {
+      chai.request(app).get('/song/rating').set({ Authorization: '' })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+          expect(res.statusCode).to.equal(401);
+          done();
+        });
+    });
+  });
+  describe('Get a single song with its average rating', () => {
+    it('should allow an user get all songs with their average ratings', (done) => {
+      chai.request(app).get(`/song/${songId}`).set({ Authorization: `Bearer ${userToken}` })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Song fetched successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should throw an error when the user is not logged in', (done) => {
+      chai.request(app).get(`/song/${songId}`).set({ Authorization: '' })
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('You need to be signed in');
+          expect(res.statusCode).to.equal(401);
           done();
         });
     });

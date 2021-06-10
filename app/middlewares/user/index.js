@@ -73,5 +73,11 @@ class UserMiddleware {
         new ApiError({ message: USER_EXIST_VERIFICATION_FAIL_MSG }));
     }
   }
+
+  static async userValidator(req, res, next) {
+    return req.user.role === 'user'
+      ? next()
+      : errorResponse(req, res, genericErrors.unAuthorized);
+  }
 }
 export default UserMiddleware;
