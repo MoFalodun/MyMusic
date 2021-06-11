@@ -60,13 +60,10 @@ class SongController {
     try {
       const song = await getSongById(req.params.id);
       const { rating } = await getSongRating(req.params.id);
-      return res
-        .status(200)
-        .json({
-          status: 'success',
-          message: RESOURCE_FETCH_SUCCESS('Song'),
-          data: { ...song, rating: parseFloat(rating, 10).toFixed(1) || null },
-        });
+      successResponse(res, {
+        message: RESOURCE_FETCH_SUCCESS('Song'),
+        data: { ...song, rating: parseFloat(rating, 10).toFixed(1) || null },
+      });
     } catch (e) {
       e.status = RESOURCE_FETCH_ERROR('Song');
       Helper.moduleErrLogMessager(e);
@@ -88,13 +85,10 @@ class SongController {
   static async fetchAllSongs(req, res) {
     try {
       const songs = await getAllSongs();
-      return res
-        .status(200)
-        .json({
-          status: 'success',
-          message: RESOURCE_FETCH_SUCCESS('Songs'),
-          data: songs
-        });
+      successResponse(res, {
+        message: RESOURCE_FETCH_SUCCESS('Songs'),
+        data: songs
+      });
     } catch (e) {
       e.status = RESOURCE_FETCH_ERROR('Songs');
       Helper.moduleErrLogMessager(e);
@@ -116,13 +110,10 @@ class SongController {
   static async fetchAllSongsByRating(req, res) {
     try {
       const songs = await getAllSongsByRating({ rating: req.body.rating });
-      return res
-        .status(200)
-        .json({
-          status: 'success',
-          message: 'Songs fetched successfully',
-          data: songs
-        });
+      successResponse(res, {
+        message: RESOURCE_FETCH_SUCCESS('Songs'),
+        data: songs
+      });
     } catch (e) {
       e.status = RESOURCE_FETCH_ERROR('Songs');
       Helper.moduleErrLogMessager(e);

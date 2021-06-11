@@ -92,12 +92,10 @@ class PlaylistController {
   static async getSongsOnPlaylist(req, res) {
     try {
       const playlistSongs = await getPlaylistSongs(req.playlist.id);
-      return res
-        .json({
-          status: 'success',
-          message: RESOURCE_FETCH_SUCCESS('Playlist'),
-          data: playlistSongs
-        });
+      successResponse(res, {
+        message: RESOURCE_FETCH_SUCCESS('Playlist'),
+        data: playlistSongs
+      });
     } catch (e) {
       e.status = RESOURCE_FETCH_ERROR('Playlist');
       Helper.moduleErrLogMessager(e);
