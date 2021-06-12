@@ -29,10 +29,10 @@ router.post(
   login
 );
 
+router.use(authenticate, userValidator);
+
 router.post(
   '/playlist',
-  authenticate,
-  userValidator,
   validate(playlistCreateSchema),
   checkUniquePlaylistName,
   createPlaylist
@@ -40,8 +40,6 @@ router.post(
 
 router.post(
   '/add-song',
-  authenticate,
-  userValidator,
   checkIfPlaylistExist,
   checkPlaylistOwner,
   checkIfSongExist,
@@ -50,8 +48,6 @@ router.post(
 
 router.post(
   '/playlist/likes/:id',
-  authenticate,
-  userValidator,
   validate(playlistLikeSchema),
   checkIfPlaylistExist,
   checkUniqueDecision,
@@ -60,8 +56,6 @@ router.post(
 
 router.get(
   '/playlist/',
-  authenticate,
-  userValidator,
   checkIfPlaylistNameExist,
   getSongsOnPlaylist
 );

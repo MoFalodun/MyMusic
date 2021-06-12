@@ -10,9 +10,10 @@ const { fileUpload } = UploadMiddleware;
 const { checkIfAlbumExists } = AlbumMiddleware;
 const router = Router();
 
+router.use(authenticate);
+
 router.post(
   '/',
-  authenticate,
   artistValidator,
   checkIfAlbumExists,
   fileUpload,
@@ -21,21 +22,18 @@ router.post(
 
 router.get(
   '/',
-  authenticate,
   userValidator,
   fetchAllSongs
 );
 
 router.get(
   '/rating',
-  authenticate,
   userValidator,
   fetchAllSongsByRating
 );
 
 router.get(
   '/:id',
-  authenticate,
   userValidator,
   fetchSong
 );
