@@ -23,10 +23,11 @@ class AlbumController {
     try {
       const { id } = req.user;
       const album = new AlbumModel({ ...req.body, artistId: id });
-      await album.save();
+      const data = await album.save();
       successResponse(res, {
         message: RESOURCE_CREATE_SUCCESS('Album'),
-        status: 200
+        code: 201,
+        data
       });
     } catch (e) {
       const dbError = new DBError({

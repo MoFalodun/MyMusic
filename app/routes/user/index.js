@@ -1,12 +1,18 @@
 import { Router } from 'express';
-import { ValidationMiddleware, UserMiddleware } from '../../middlewares';
-import { userSignUpSchema, userLoginSchema } from '../../validations';
-import { AuthController } from '../../controllers';
+import { ValidationMiddleware, UserMiddleware, AuthMiddleware, PlaylistMiddleware, SongMiddleware } from '../../middlewares';
+import { userSignUpSchema, userLoginSchema, playlistCreateSchema, playlistLikeSchema } from '../../validations';
+import { AuthController, PlaylistController } from '../../controllers';
 
 const { checkIfUserExistsByEmail,
-  userLoginEmailValidator } = UserMiddleware;
+  userLoginEmailValidator, userValidator } = UserMiddleware;
 const { validate } = ValidationMiddleware;
+const { authenticate } = AuthMiddleware;
+const { checkUniquePlaylistName, checkPlaylistOwner,
+  checkIfPlaylistNameExist,
+  checkUniqueDecision, checkIfPlaylistExist } = PlaylistMiddleware;
 const { userSignup, login } = AuthController;
+const { createPlaylist, getSongsOnPlaylist, addSongsToPlaylist, likePlaylist } = PlaylistController;
+const { checkIfSongExist } = SongMiddleware;
 const router = Router();
 
 router.post(
@@ -21,6 +27,37 @@ router.post(
   validate(userLoginSchema),
   userLoginEmailValidator,
   login
+);
+
+router.use(authenticate, userValidator);
+
+router.post(
+  '/playlist',
+  validate(playlistCreateSchema),
+  checkUniquePlaylistName,
+  createPlaylist
+);
+
+router.post(
+  '/add-song',
+  checkIfPlaylistExist,
+  checkPlaylistOwner,
+  checkIfSongExist,
+  addSongsToPlaylist
+);
+
+router.post(
+  '/playlist/likes/:id',
+  validate(playlistLikeSchema),
+  checkIfPlaylistExist,
+  checkUniqueDecision,
+  likePlaylist
+);
+
+router.get(
+  '/playlist/',
+  checkIfPlaylistNameExist,
+  getSongsOnPlaylist
 );
 
 export default router;

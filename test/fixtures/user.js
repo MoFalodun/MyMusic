@@ -32,3 +32,7 @@ export const fakeLoginObj = {
   email: faker.internet.email(),
   password: faker.internet.password(10)
 };
+
+export const playlistName = faker.name.firstName(10);
+
+export const duplicatePlaylistName = playlistName;

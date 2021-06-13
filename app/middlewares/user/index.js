@@ -73,5 +73,22 @@ class UserMiddleware {
         new ApiError({ message: USER_EXIST_VERIFICATION_FAIL_MSG }));
     }
   }
+
+  /**
+   * Validates user's login credentials, with emphasis on the
+   * the sign_up role.
+   * @static
+   * @param { Object } req - The request from the endpoint.
+   * @param { Object } res - The response returned by the method.
+   * @param { function } next - Calls the next handle.
+   * @returns { JSON | Null } - Returns error response if validation fails or Null if otherwise.
+   * @memberof UserMiddleware
+   *
+   */
+  static async userValidator(req, res, next) {
+    return req.user.role === 'user'
+      ? next()
+      : errorResponse(req, res, genericErrors.forbidden);
+  }
 }
 export default UserMiddleware;
