@@ -6,7 +6,7 @@ const {
 } = queries;
 
 /**
- * Contains a collection of service methods for managing Admin resource on the app.
+ * Contains a collection of service methods for managing User resource on the app.
  * @class UserService
  *
  */

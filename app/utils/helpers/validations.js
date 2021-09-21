@@ -10,7 +10,7 @@ class ValidationHelper {
      * @memberof ValidationHelper
      * @returns {Boolean}
      */
-  static numberCheck(param, joiObject, min = 1, max) {
+  static numberCheck(param, joiObject, max, min = 1) {
     return joiObject
       .number()
       .required()

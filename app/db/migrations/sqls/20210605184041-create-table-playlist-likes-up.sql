@@ -5,7 +5,6 @@ CREATE TYPE playlist_decision AS ENUM (
 'neutral'
 );
 
-
 CREATE TABLE IF NOT EXISTS playlist_likes (
     id SERIAL PRIMARY KEY,
     user_id uuid REFERENCES user_info(id) NOT NULL,

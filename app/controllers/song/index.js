@@ -98,7 +98,7 @@ class SongController {
   }
 
   /**
-   * Controllers used for fetching all songs
+   * Controllers used for fetching all songs by their rating
    * @static
    * @param {Request} req - The request from the endpoint.
    * @param {Response} res - The response returned by the method.

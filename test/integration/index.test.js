@@ -554,4 +554,34 @@ describe('User Activities', () => {
         });
     });
   });
+
+  describe('Subscription Routes', () => {
+    it('should allow an user get available subscriptions', (done) => {
+      chai.request(app).get('/subscription')
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Subscriptions fetched successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should allow a user get a subscription by id', (done) => {
+      chai.request(app).get('/subscription/1')
+        .end((err, res) => {
+          expect(res.body.status).to.equal('success');
+          expect(res.body.message).to.be.a('string').equal('Subscription fetched successfully');
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+    it('should throw error when a subscription with the given id is not found', (done) => {
+      chai.request(app).get('/subscription/10')
+        .end((err, res) => {
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.message).to.be.a('string').equal('Subscription does not exist');
+          expect(res.statusCode).to.equal(404);
+          done();
+        });
+    });
+  });
 });
