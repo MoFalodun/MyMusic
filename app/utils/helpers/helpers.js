@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import axios from 'axios';
 import genericError from '../error/generic';
 import constants from '../constants';
 
@@ -81,8 +82,7 @@ class Helper {
    */
   static addDataToToken(data) {
     const { id, email, role } = data;
-    const token = Helper.generateToken({ id, email, role });
-    return token;
+    return Helper.generateToken({ id, email, role });
   }
 
   /**
@@ -164,6 +164,24 @@ class Helper {
     logger.error(
       `${error.name} - ${error.status} - ${error.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`
     );
+  }
+
+  /**
+   * Makes a POST Request to an external API.
+   * @static
+   * @param {string} url - URL.
+   * @param { Object } options - Query object (optional).
+   * @memberof Helper
+   * @returns {Promise <Object | Error>} - A HTTP response object or an Error Object.
+   */
+  static async makePaymentRequest(url, options = {}, method = 'POST') {
+    try {
+      const { status, data } = await axios({ url, method, ...options });
+      return { status, data };
+    } catch (e) {
+      e.status = e.response ? e.response.status : 500;
+      return Helper.moduleErrLogMessager(e);
+    }
   }
 }
 
